@@ -23,7 +23,8 @@
     "url": "git+https://github.com/ahmadarif/adonis-drive-google.git"
   },
   "dependencies": {
-    "@google-cloud/storage": "^1.6.0"
+    "@google-cloud/storage": "^1.6.0",
+    "shortid": "^2.2.15"
   },
   "devDependencies": {
     "@adonisjs/fold": "^4.0.8",
