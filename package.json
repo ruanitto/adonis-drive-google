@@ -1,5 +1,5 @@
 {
-  "name": "adonis-drive-google",
+  "name": "@ordent/adonis-gcp",
   "version": "0.0.2",
   "description": "Google Cloud Storage Driver for Adonis Drive",
   "scripts": {
@@ -16,11 +16,11 @@
     "cloud",
     "storage"
   ],
-  "author": "Ahmad Arif <ahmad.arif019@gmail.com>",
+  "author": "Dimas Satrio <dimassrio@gmail.com>",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ahmadarif/adonis-drive-google.git"
+    "url": "git+https://github.com/dimassrio/adonis-drive-google.git"
   },
   "dependencies": {
     "@google-cloud/storage": "^1.6.0",
@@ -57,9 +57,9 @@
     ]
   },
   "bugs": {
-    "url": "https://github.com/ahmadarif/adonis-drive-google/issues"
+    "url": "https://github.com/dimassrio/adonis-drive-google/issues"
   },
-  "homepage": "https://github.com/ahmadarif/adonis-drive-google#readme",
+  "homepage": "https://github.com/dimassrio/adonis-drive-google#readme",
   "main": "index.js",
   "directories": {
     "example": "examples"
