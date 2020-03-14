@@ -4,6 +4,7 @@ const Storage = require("@google-cloud/storage");
 const Resetable = require("resetable");
 const mime = require("mime-types");
 const fs = require("fs");
+const shortid = require('shortid');
 
 /**
  * Google cloud storage driver for flydrive
@@ -109,21 +110,66 @@ class GoogleStorage {
    *
    * @return {Promise<String>} Public URL
    */
-  put(location, content, options = {}) {
-    const clonedOptions = Object.assign({}, options, {
-      destination: location,
-      contentType: mime.lookup(location)
-    });
+//   put(location, content, options = {}) {
+//     const clonedOptions = Object.assign({}, options, {
+//       destination: location,
+//       contentType: mime.lookup(location)
+//     });
 
-    return new Promise((resolve, reject) => {
-      this.storage
-        .bucket(this._bucket.pull())
-        .upload(content, clonedOptions, error => {
-          if (error) return reject(error);
-          return resolve(this.getUrl(location, this._bucket.pull()));
+//     return new Promise((resolve, reject) => {
+//       this.storage
+//         .bucket(this._bucket.pull())
+//         .upload(content, clonedOptions, error => {
+//           if (error) return reject(error);
+//           return resolve(this.getUrl(location, this._bucket.pull()));
+//         });
+//     });
+//   }
+    async put(name, item, options = {}){
+        const clonedOptions = Object.assign({}, options, {
+            destination: name,
+            contentType: mime.lookup(name),
+            public: true
         });
-    });
-  }
+        if(typeof item === 'string'){
+            if(await Drive.disk('local').exists(item)){
+                return new Promise((resolve, reject) => {
+                    this.storage
+                        .bucket(this._bucket.pull())
+                        .upload(item, clonedOptions, error => {
+                            if(error){
+                                return reject(error)
+                            }
+                            return resolve(this.getUrl(name, this._bucket.pull()))
+                        })
+                })
+            }else{
+                const randomizer = name+shortid.generate()
+                const temp = await Drive.disk('local').put(randomizer, Buffer.from(item, 'base64'))
+                return new Promise((resolve, reject) => {
+                    this.storage
+                        .bucket(this._bucket.pull())
+                        .upload(temp, clonedOptions, error => {
+                            if(error){
+                                return reject(error)
+                            }
+                            return resolve(this.getUrl(name, this._bucket.pull()))
+                        })
+                })
+            }
+        } else {
+            return new Promise((resolve, reject) => {
+                this.storage
+                    .bucket(this._bucket.pull())
+                    .upload(item.tmpPath, clonedOptions, error => {
+                        if(error){
+                            return reject(error)
+                        }
+                        return resolve(this.getUrl(name, this._bucket.pull()))
+                    })
+            })
+        }
+    }
 
   /**
    * Remove a file

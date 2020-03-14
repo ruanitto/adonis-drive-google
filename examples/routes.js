@@ -4,10 +4,9 @@ const Route = use('Route')
 const Drive = use('Drive')
 
 Route.post('gcs', async ({ request, response }) => {
-  const file = request.file('image')
-  const url = await Drive.disk('gcs').put(file.clientName, file.tmpPath)
-  response.send({ url: url })
-
+    const file = request.file('image')
+    const url = await Drive.disk('gcs').put(file.clientName, file.tmpPath)
+    response.send({ url: url })
   // if the file is publicly accessible, add options { public: true }
   // const url = await Drive.disk('gcs').put(file.clientName, file.tmpPath, { public: true })
 })
