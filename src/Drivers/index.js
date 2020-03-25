@@ -5,7 +5,7 @@ const Resetable = require("resetable");
 const mime = require("mime-types");
 const fs = require("fs");
 const shortid = require('shortid');
-
+const Drive = use('Drive')
 /**
  * Google cloud storage driver for flydrive
  *
