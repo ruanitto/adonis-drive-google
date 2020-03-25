@@ -1,6 +1,6 @@
 {
   "name": "@ordent/adonis-gcp",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Google Cloud Storage Driver for Adonis Drive",
   "scripts": {
     "test": "echo \"not tested\"",
