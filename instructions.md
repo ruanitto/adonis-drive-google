@@ -4,7 +4,7 @@ Make sure to register the provider inside `start/app.js` file.
 ```js
 const providers = [
   ...
-  'adonis-drive-google/providers/DriveProvider'
+  '@ruanitto/adonis-drive-google/providers/DriveProvider'
 ]
 ```
 

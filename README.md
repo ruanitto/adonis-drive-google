@@ -1,7 +1,4 @@
-# adonis-drive-google 💾 
-[![npm version](https://badge.fury.io/js/adonis-drive-google.svg)](https://badge.fury.io/js/adonis-drive-google)
-[![npm](https://img.shields.io/npm/dt/adonis-drive-google.svg)](https://www.npmjs.com/package/adonis-drive-google)
-[![npm](https://img.shields.io/npm/l/adonis-drive-google.svg)](https://www.npmjs.com/package/adonis-drive-google)
+# @ruanitto/adonis-drive-google 💾 
 
 Google Cloud Storage driver for AdonisJS Drive
 
@@ -10,7 +7,7 @@ Google Cloud Storage driver for AdonisJS Drive
 
 # Installation
 ```
-adonis install adonis-drive-google
+adonis install @ruanitto/adonis-drive-google
 ```
 
 # Instructions
@@ -19,7 +16,7 @@ Make sure to register the provider inside `start/app.js` file.
 ```js
 const providers = [
   ...
-  'adonis-drive-google/providers/DriveProvider'
+  '@ruanitto/adonis-drive-google/providers/DriveProvider'
 ]
 ```
 
