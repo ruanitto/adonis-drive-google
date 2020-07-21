@@ -4,6 +4,7 @@ const Storage = require('@google-cloud/storage');
 const Resetable = require('resetable');
 const mime = require('mime-types');
 const fs = require('fs');
+const FileType = require('file-type')
 
 /**
  * Google cloud storage driver for flydrive
@@ -126,16 +127,17 @@ class GoogleStorage {
   }
 
   async putStream(location, item, options = {}) {
+    const type = await FileType.fromBuffer(item)
     const clonedOptions = Object.assign({}, options, {
       destination: location,
-      // contentType: mime.lookup(name),
+      contentType: type.mime,
       public: true
     });
 
     return new Promise((resolve, reject) => {
-      const file = this.storage.bucket(this._bucket.pull()).file(location, clonedOptions)
+      const file = this.storage.bucket(this._bucket.pull()).file(location)
 
-      file.save(item, (error) => {
+      file.save(item, clonedOptions, (error) => {
         if (error) return reject(error);
         return resolve(this.getUrl(location, this._bucket.pull()));
       })

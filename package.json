@@ -1,6 +1,6 @@
 {
   "name": "@ruanitto/adonis-drive-google",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "Google Cloud Storage Driver for Adonis Drive",
   "scripts": {
     "test": "echo \"not tested\"",
@@ -24,7 +24,8 @@
     "url": "git+https://github.com/ruanitto/adonis-drive-google.git"
   },
   "dependencies": {
-    "@google-cloud/storage": "^1.6.0"
+    "@google-cloud/storage": "^1.6.0",
+    "file-type": "^14.6.2"
   },
   "devDependencies": {
     "@adonisjs/fold": "^4.0.8",
