@@ -1,6 +1,6 @@
 'use strict';
 
-const Storage = require('@google-cloud/storage');
+const { Storage } = require('@google-cloud/storage');
 const Resetable = require('resetable');
 const mime = require('mime-types');
 const fs = require('fs');
